@@ -1,4 +1,4 @@
-# Overlay with packages that I contribute to the Gentoo's GURU Project Repository
+# Personal Gentoo overlay: packages I contribute to the GURU Project Repository and packages for my own use
 
 ### Contents
 
