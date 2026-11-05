@@ -24,8 +24,8 @@ RDEPEND="
 		dev-python/packaging[${PYTHON_USEDEP}]
 		dev-python/psutil[${PYTHON_USEDEP}]
 		>=dev-python/proton-vpn-api-core-6.0.0[${PYTHON_USEDEP}]
+		dev-util/bcc[python,${PYTHON_USEDEP}]
 	')
-	dev-util/bcc[python,${PYTHON_SINGLE_USEDEP}]
 	net-vpn/wireguard-tools
 	sys-apps/dbus
 "
