@@ -50,3 +50,9 @@ src_install() {
 	insinto /usr/share/dbus-1/system-services
 	newins rpmbuild/SOURCES/dbus.service me.proton.vpn.split_tunneling.service
 }
+
+pkg_postinst() {
+	elog "The Proton VPN app detects split tunneling only while the daemon runs."
+	elog "Enable it with:"
+	elog "  systemctl enable --now proton.VPN.service"
+}
