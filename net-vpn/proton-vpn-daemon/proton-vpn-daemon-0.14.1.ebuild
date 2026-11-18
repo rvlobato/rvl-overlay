@@ -7,7 +7,7 @@ DISTUTILS_SINGLE_IMPL=1
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{12..14} )
 
-inherit distutils-r1 systemd
+inherit distutils-r1 linux-info systemd
 
 DESCRIPTION="Proton VPN daemon (split tunneling service)"
 HOMEPAGE="https://github.com/ProtonVPN/proton-vpn-daemon"
@@ -32,6 +32,17 @@ RDEPEND="
 
 # Use tracepoints instead of kprobes, which bcc no longer attaches to
 # the execve syscall wrappers (same patch as used by Arch Linux).
+# The cgroup socket filter calls bpf_trace_printk (needs BPF_EVENTS) and
+# the process monitor attaches to syscalls:sys_enter_execve (needs
+# FTRACE_SYSCALLS). Without them the BPF load fails with EINVAL.
+CONFIG_CHECK="~BPF_SYSCALL ~CGROUP_BPF ~BPF_EVENTS ~FTRACE_SYSCALLS ~WIREGUARD"
+ERROR_BPF_EVENTS="CONFIG_BPF_EVENTS is required (enable CONFIG_KPROBE_EVENTS or CONFIG_UPROBE_EVENTS)"
+
+pkg_setup() {
+	linux-info_pkg_setup
+	python-single-r1_pkg_setup
+}
+
 PATCHES=(
 	"${FILESDIR}/${P}-bcc-tracepoints.patch"
 )
