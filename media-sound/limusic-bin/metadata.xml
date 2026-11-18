@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>vieira.lobato@gmail.com</email>
+		<name>R. V. Lobato</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">SimoHypers/limusic</remote-id>
+	</upstream>
+</pkgmetadata>
