@@ -62,6 +62,10 @@ pkg_postinst() {
 	elog "The built-in updater cannot update a Portage-managed install;"
 	elog "update through emerge instead."
 	elog
+	elog "Karaoke downloads ONNX Runtime, its WebGPU provider and the"
+	elog "separation models into the user's cache on first use. GPU"
+	elog "processing goes through Vulkan (media-libs/vulkan-loader)."
+	elog
 	elog "On nouveau, WebKitGTK's DMA-BUF renderer may show a blank or red"
 	elog "window. Start it with WEBKIT_DISABLE_DMABUF_RENDERER=1 in that case."
 }
