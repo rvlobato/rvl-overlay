@@ -33,20 +33,11 @@ RDEPEND="
 	x11-libs/gtk+:3
 "
 
-QA_PREBUILT="usr/bin/${MY_PN}"
-
-src_prepare() {
-	default
-
-	# Install the binary as "limusic". The window app ID follows the name
-	# it is started with, so it then matches limusic.desktop.
-	sed -i -e "s/^Exec=limusic-app/Exec=${MY_PN}/" \
-		-e "s/^StartupWMClass=limusic-app/StartupWMClass=${MY_PN}/" \
-		usr/share/applications/limusic.desktop || die
-}
+QA_PREBUILT="usr/bin/${MY_PN}-app"
 
 src_install() {
-	newbin usr/bin/limusic-app ${MY_PN}
+	dobin usr/bin/${MY_PN}-app
+	dosym ${MY_PN}-app /usr/bin/${MY_PN}
 
 	local size
 	for size in 32 64 128 512; do
